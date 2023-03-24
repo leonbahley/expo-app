@@ -66,10 +66,14 @@ export default function CreateScreen({ navigation }) {
   };
 
   const uploadPostToServer = () => {
-    preparePost();
-    navigation.navigate("posts");
-    setPhoto(null);
-    setDescription("");
+    try {
+      preparePost();
+      navigation.navigate("posts");
+      setPhoto(null);
+      setDescription("");
+    } catch (error) {
+      alert(error.message);
+    }
   };
 
   const uploadPhotoToServer = async () => {
